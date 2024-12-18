@@ -3,10 +3,38 @@
 # ------------------------------------------------------
 
 type User {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  id: Int
+  email: String
+  password: String
+  avatar: String
+  displayName: String
+  username: String
+  fullName: String
+  secondaryEmail: String
+  phoneNumber: String
+  country: String
+  state: String
+  zip: Int
+  verifiedEmail: Boolean
+  verifiedPhoneNumber: Boolean
+}
+
+type Auth {
+  accessToken: String!
+  refreshToken: String!
 }
 
 type Query {
-  users: [User!]!
+  findAll: [User!]!
+  auth: Boolean!
+}
+
+type Mutation {
+  register(user: registerDto!): Auth!
+}
+
+input registerDto {
+  email: String!
+  password: String!
+  confirmPassword: String!
 }
